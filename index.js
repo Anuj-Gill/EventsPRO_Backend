@@ -9,13 +9,18 @@ dotenv.config();
 //app decleration
 const app = express();
 connectDB();
+app.use(cors());
+app.use(express.json())
 
 //importing routes
+import authRoute from './routes/authR.js';
+import headRoute from './routes/headR.js';
+import adminRoute from './routes/adminR.js'
+import { AuthCheck } from './middleware/authM.js';
 
-
-app.get('/',(req,res) => {
-    res.send('Hello world');
-})
+app.use('/auth',authRoute);
+app.use('/head',AuthCheck(),headRoute);
+app.use('/admin',AuthCheck(), adminRoute);
 
 
 

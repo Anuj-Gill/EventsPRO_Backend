@@ -7,7 +7,7 @@ const StudentSchema = new mongoose.Schema({
     },
     rollNo: {
         type: String,
-        unique: true
+        required: true
     },
     email: {
         type: String,
@@ -22,12 +22,8 @@ const StudentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    division: {
-        type: String,
-        required: true
-    },
     year: {
-        type: Number,
+        type: String,
         required: true
     },
     gender: {
@@ -35,6 +31,7 @@ const StudentSchema = new mongoose.Schema({
         required: true
     },
     role: {
+        type: String,
         default: "Student"
     },
     events: {

@@ -17,5 +17,13 @@ const adminSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true
+    },
+    driveLink: {
+        type: String,
+    },
+    committee: {
+        type: String,
     }
 });
+
+export const adminModel = mongoose.model('admins', adminSchema);
