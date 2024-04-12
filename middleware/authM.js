@@ -12,7 +12,7 @@ export function AuthCheck() {
                 res.send("plz login");
                 res.status(201);
             }
-            const token = authtoken.split(" ")[1];
+            const token = authtoken.split(" ")[2];
             console.log('line 15', token)
             const decodedData  = await verifyToken(token);
             console.log(decodedData, "line 16 authM");

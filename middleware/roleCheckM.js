@@ -19,6 +19,7 @@ export function RoleCheck() {
             else if(user.role != ("head" || "student")) {
                 req.body = body;
                 req.body.role = user.role;
+                req.body.committee = user.committee;
                 next();
             }
             else {
