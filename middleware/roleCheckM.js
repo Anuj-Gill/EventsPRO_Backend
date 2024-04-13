@@ -15,7 +15,7 @@ export function RoleCheck() {
                 req.body.driveLink = user.driveLink;
                 req.body.committee = user.committee;
                 next();
-            }
+            } 
             else if(user.role != ("head" || "student")) {
                 req.body = body;
                 req.body.role = user.role;

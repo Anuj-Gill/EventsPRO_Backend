@@ -6,6 +6,7 @@ import { json } from "express";
 export function AuthCheck() {
     return async (req, res, next) => {
         const body = req.body;
+        console.log(body)
         const authtoken = req.headers.authorization;
         try {
             if (!authtoken || !authtoken.startsWith("Bearer")) {
@@ -20,7 +21,7 @@ export function AuthCheck() {
             if (decodedData != null) {
                 req.body = body;
                 req.body.email = decodedData["email"];
-                console.log(req.body);
+                console.log(req.body, "line 23 authm");
                 next();
             }
         } catch (error) {
