@@ -1,7 +1,7 @@
 import { eventsModel } from "../schema/eventSchema.js";
 
 export async function FetchEvents(req,res) {
-    console.log(req.body);
+    console.log("reached cotroller",req.body);
     const role = req.body.role;
     const adminCommittee = req.body.committee;
     console.log(adminCommittee, role);

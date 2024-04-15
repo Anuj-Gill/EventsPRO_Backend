@@ -35,6 +35,7 @@ const StudentSchema = new mongoose.Schema({
         default: "Student"
     },
     events: {
+        type: Array,
         default: []
     },
     isActive: {

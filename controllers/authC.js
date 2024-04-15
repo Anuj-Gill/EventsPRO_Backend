@@ -51,7 +51,7 @@ export async function Login(req,res){
         }
         const token = signToken({ email:user.email ,id: user._id });
         console.log('line 53', token)
-        res.status(200).json({ status: true, message: 'Login Successfull', token, role: user.role });
+        res.status(200).json({ status: true, message: 'Login Successfull', token, role: user.role, name: user.name });
       } catch (error) {
         return res.status(500).send({ message: "Internal Server Error" });
       }

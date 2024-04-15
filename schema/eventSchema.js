@@ -78,6 +78,10 @@ const EventSchema = new mongoose.Schema({
     whatsappGroupLink: {
         type: String,
         required: true
+    },
+    participants: {
+        type: Array,
+        default: []
     }
 });
 

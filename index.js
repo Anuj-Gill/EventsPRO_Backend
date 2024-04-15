@@ -15,12 +15,14 @@ app.use(express.json())
 //importing routes
 import authRoute from './routes/authR.js';
 import headRoute from './routes/headR.js';
-import adminRoute from './routes/adminR.js'
+import adminRoute from './routes/adminR.js';
+import eventRoute from './routes/eventR.js';
 import { AuthCheck } from './middleware/authM.js';
 
 app.use('/auth',authRoute);
 app.use('/head',AuthCheck(),headRoute);
 app.use('/admin',AuthCheck(), adminRoute);
+app.use('/event',AuthCheck(), eventRoute);
 
 
 
