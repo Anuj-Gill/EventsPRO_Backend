@@ -27,6 +27,9 @@ export function RoleCheck() {
                 console.log('inside 1st elseif');
                 req.body = body;
                 req.body.studentId = user._id;
+                req.body.events = user.events;
+                req.body.email = user.email;
+                req.body.rollNo = user.rollNo;
                 console.log('Student body', req.body);
                 next();
             }

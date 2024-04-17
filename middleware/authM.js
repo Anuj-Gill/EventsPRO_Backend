@@ -6,7 +6,7 @@ import { json } from "express";
 export function AuthCheck() {
     return async (req, res, next) => {
         const body = req.body;
-        console.log(body)
+        console.log("initial body",body)
         const authtoken = req.headers.authorization;
         try {
             if (!authtoken || !authtoken.startsWith("Bearer")) {
