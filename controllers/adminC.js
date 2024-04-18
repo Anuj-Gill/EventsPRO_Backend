@@ -8,7 +8,7 @@ export async function FetchEvents(req, res) {
     let allEvents = [];
     let approved = [];
     let pending = [];
-    if (role == "CAO") {
+    if (role == "CAO" || role == "ACC") {
         allEvents = await eventsModel.find({});
     } else {
         allEvents = await eventsModel.find({ committee: adminCommittee });
@@ -16,7 +16,10 @@ export async function FetchEvents(req, res) {
     console.log("allevents", allEvents);
     if (role == 'head') {
         pending = allEvents.filter((event) => event.status.includes("Pending"));  
-    } else {
+    } else if(role == 'ACC') {
+        pending = allEvents.filter((event) => event.status.includes("PendingAccounts"));  
+    }
+    else {
         pending = allEvents.filter((event) => event.status.includes(role));
     }
     approved = allEvents.filter((event) => event.status == "Approved");
@@ -26,7 +29,7 @@ export async function FetchEvents(req, res) {
 
 export async function UpdateStatus(req, res) {
     console.log(req.body, "line 14");
-    const event = await eventsModel.updateOne({ _id: req.body.event }, { status: req.body.status });
+    const event = await eventsModel.updateOne({ _id: req.body.eventId }, { status: req.body.status, feedback: req.body.feedback });
     console.log(event);
 
 

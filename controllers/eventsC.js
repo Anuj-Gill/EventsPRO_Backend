@@ -48,3 +48,37 @@ export async function FetchStatus(req, res) {
 }
 
 
+
+export async function StudentDetails(req,res) {
+    try{
+        console.log(req.body.eventId);
+        const details = await fetchStudentDetails(req.body.eventId);
+        console.log("line 56",details);
+        res.json({participants: details});
+    } 
+    catch(error) {
+        console.log(error)
+        res.json({error: error})
+    }
+
+}
+
+
+
+async function fetchStudentDetails(eventId) {
+  try {
+    const result = await studentModel.aggregate([
+        [
+            {
+              '$match': {
+                'events': eventId
+              }
+            }
+          ]
+    ]);
+    return result
+  } catch (error) {
+    console.log(error);
+    throw error; // Re-throw error for handling at a higher level
+  }
+}

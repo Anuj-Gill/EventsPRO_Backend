@@ -16,7 +16,7 @@ export function RoleCheck() {
             }
             console.log(user, user.role == "head",user.role == "Student");
             if(user.role == "head"){
-                console.log('inside if');
+                console.log('inside if',req.body);
                 req.body = body;
                 req.body.role = user.role;
                 req.body.driveLink = user.driveLink;
@@ -34,7 +34,7 @@ export function RoleCheck() {
                 next();
             }
             else if(user.role != ("head" || "Student")) {
-                console.log('inside 2nd elseif');
+                console.log('inside 2nd elseif',req.body);
                 req.body = body;
                 req.body.role = user.role;
                 req.body.committee = user.committee;
