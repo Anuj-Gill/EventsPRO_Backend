@@ -11,3 +11,14 @@ export async function EventRegister(req,res) {
         console.log(error)
     }
 }
+
+export async function DeleteEvent(req,res) {
+    try{
+        console.log("line 17",req.body);
+        await eventsModel.deleteOne({_id: req.body.eventId});
+        res.json({message: "Event deleted successfylly!!"})
+    } 
+    catch(error) {
+
+    }
+}
